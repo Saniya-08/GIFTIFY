@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎁 Giftify - Festival Shopping Assistant</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: linear-gradient(to right, #fff0f5, #ffe4e1);
+      color: #333;
+    }
+    header, footer {
+      background-color: #ff69b4;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #ffc0cb;
+      gap: 20px;
+      padding: 10px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+    }
+    section {
+      padding: 30px;
+      text-align: center;
+    }
+    .products, .cart {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .item, .cart-item {
+      background-color: #fff;
+      border: 2px solid #ffb6c1;
+      border-radius: 10px;
+      padding: 15px;
+      width: 200px;
+    }
+    button {
+      padding: 5px 10px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #total {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🎁 Giftify</h1>
+    <p>Festival Shopping Assistant | Created by Saniya (Roll No: 2438360)</p>
+    <p>Completed Tasks: 17</p>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#diwali">Diwali</a>
+    <a href="#Rakhi">Rakhi</a>
+     <a href="#birthday">Birthday</a>
+    <a href="#anniversary">Anniversary</a>
+    <a href="#cart">View Cart</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="home">
+    <h2>Welcome to Giftify!</h2>
+    <p>Your one-stop shop for all things gifting — Diwali, Birthdays, Anniversaries & more!</p>
+  </section>
+
+  <section id="diwali">
+    <h2>🪔 Diwali Gifts</h2>
+    <div class="products">
+      <div class="item">
+        <h4>Diya Set</h4>
+        <p>₹150</p>
+        <button onclick="addToCart('Diya Set', 150)">Add to Cart</button>
+      </div>
+      <div class="item">
+        <h4>Sweets Box</h4>
+        <p>₹250</p>
+        <button onclick="addToCart('Sweets Box', 250)">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="birthday">
+    <h2>🎂 Birthday Gifts</h2>
+    <div class="products">
+      <div class="item">
+        <h4>Chocolate Hamper</h4>
+        <p>₹200</p>
+        <button onclick="addToCart('Chocolate Hamper', 200)">Add to Cart</button>
+      </div>
+      <div class="item">
+        <h4>Teddy Bear</h4>
+        <p>₹300</p>
+        <button onclick="addToCart('Teddy Bear', 300)">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="anniversary">
+    <h2>💐 Anniversary Gifts</h2>
+    <div class="products">
+      <div class="item">
+        <h4>Photo Frame</h4>
+        <p>₹180</p>
+        <button onclick="addToCart('Photo Frame', 180)">Add to Cart</button>
+      </div>
+      <div class="item">
+        <h4>Couple Mug Set</h4>
+        <p>₹350</p>
+        <button onclick="addToCart('Couple Mug Set', 350)">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="cart">
+    <h2>🧾 Your Cart</h2>
+    <div class="cart" id="cartItems"></div>
+    <p id="total">Total: ₹0</p>
+    <button onclick="placeOrder()">Place Order</button>
+  </section>
+
+  <section id="contact">
+    <h2>📞 Contact</h2>
+    <p>Email: saniya.giftify@example.com</p>
+    <p>&copy; 2025 Giftify - Created by Saniya</p>
+  </section>
+
+  <script>
+    let cart = [];
+    let total = 0;
+
+    function addToCart(name, price) {
+      cart.push({ name, price });
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartDiv = document.getElementById("cartItems");
+      cartDiv.innerHTML = "";
+      total = 0;
+      cart.forEach((item, index) => {
+        total += item.price;
+        cartDiv.innerHTML += <div class='cart-item'><p>${item.name} - ₹${item.price}</p></div>;
+      });
+      document.getElementById("total").innerText = Total: ₹${total};
+    }
+
+    function placeOrder() {
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+      alert("Thank you for your order! Have a joyful celebration! 🎉");
+      cart = [];
+      updateCart();
+    }
+  </script>
+
+</body>
+</html>
